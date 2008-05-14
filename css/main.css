@@ -1,0 +1,227 @@
+body,html {
+	font-family: Tahoma , Helvetica, sans-serif;
+	font-size: 12px;	
+	background:#666;
+	margin:0;
+	padding:0;
+}
+
+div.content {
+	width:802px;	
+	border:1px solid #000;
+	background:white;
+	margin:0;
+	padding:0;
+}
+
+div.innerContent {
+	background:white;
+	padding:0;
+	padding-left:2em;
+	padding-right:2em;
+	padding-top:0.4em; 
+	margin:0;
+}
+
+div#footer {
+	border-top:2px dotted gray;
+	color:navy;
+	font-size:8pt;	
+	margin-bottom:0.5em;
+	padding:0.2em;
+	padding-right:1em;
+	text-align:right;
+}
+
+div#navi {
+	padding:0;
+	width: 15em;
+	float:right;
+	margin:0.5em;
+	border:1px navy dotted;
+}
+
+div#navi ul
+{
+	padding: 0.4ex;
+}
+
+div#navi li {
+  list-style:none;
+ 	padding:0;
+}
+
+div.text {
+	text-align:justify;
+}
+
+hr {
+	border: 0;
+	border-top: 1px navy solid;
+	width: 100%;
+}
+
+/**
+ * Formulare-Eigenschaften
+
+input[type="text"],
+input[type="password"],textarea {
+	width: 100%;
+	border: 1px navy solid;
+}
+
+select {
+	border: 1px navy solid;
+}
+
+input[type="reset"], 
+input[type="submit"] 
+{ 
+	border: 1px navy dotted;
+	border-bottom: 2px black solid;
+	border-right: 2px black solid;
+	background: #CFbFFF;
+}
+
+input[type="text"]:hover,input[type="password"]:hover,textarea:hover,select:hover
+	{
+	border: 1px green solid;
+	background: #AABBCC;
+}
+*/
+optgroup {
+	background: #ccc;
+	color: navy;
+}
+
+option {
+	background: white;
+	color: black;
+}
+/* Ende formular-eigenschaften */
+
+.error {
+	border: red 2px dotted;
+	font-weight: 600;
+	opacity: .8;
+	background: #FF3355;
+	padding: 0.3em;
+	margin-bottom: 1em;
+}
+
+.success {
+	border: green 2px dashed;
+	opacity: .7;
+	filter: alpha(opacity =   70);
+	background: #00FF55;
+	text-indent: 5em;
+	font-weight: 900;
+	font-size: 14pt;
+}
+
+.done {
+	font-style: italic;
+	color: grey;
+	list-style-image: url(../res/icons/accept.png);
+}
+
+h1 {
+	color:#404157;
+	font-family:"Verdana";
+	font-size:19px;
+	font-weight:bold;
+	letter-spacing:1px;
+	text-decoration:none;
+}
+
+h2 {
+	color:#6D7983;
+	font-family:Tahoma;
+	font-size:15px;
+	font-weight:bold;
+}
+
+img {
+	border: 0;
+}
+
+legend {
+	color: navy;
+	font-size: 14pt;
+}
+
+/*****************************************************************************/
+/***********************  Tabellen Formate  **********************************/
+/*****************************************************************************/
+table,tr,td,th {
+	border-collapse: collapse;
+}
+/*
+td { 
+	padding: 5px;
+}
+tr:hover {
+	background: #ddd;
+}
+td:hover {
+	background: #aaa;
+           }
+
+th {
+	background: #ddd;
+	font-size:13px;
+}
+div#navi  th { 
+	text-align:right; 
+	background:white; 
+	font-size:11px;
+}
+
+div#navi  th,
+div#navi  table,
+div#navi  tr,
+div#navi  td {
+               border: 0;
+}
+/*****************************************************************************/
+
+#tag_soup { 
+            border: 1px navy dotted;
+            padding:10px;
+            margin:5px;
+}
+
+.info { 
+        border: 1px dotted navy;
+        background: #ddd;
+        clear:both;
+        height:100%;
+        }
+
+.info h3{ display:none; }
+
+.info ul { list-style:none; margin:0; padding:0; }
+
+/** AUTO COMPLETION FORMS */
+div.autocomplete {
+                   position:absolute;
+                   width:250px;
+                   background-color:white;
+                   border:1px solid #888;
+                   margin:0px;
+                   padding:0px;
+                   }
+div.autocomplete ul {
+                      list-style-type:none;
+                      margin:0px;
+                      padding:0px;
+                      }
+div.autocomplete ul li.selected { background-color: #ffb;}
+div.autocomplete ul li {
+                         list-style-type:none;
+                         display:block;
+                         margin:0;
+                         padding:2px;
+                         height:32px;
+                         cursor:pointer;
+                         }
