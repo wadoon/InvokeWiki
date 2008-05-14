@@ -1,0 +1,29 @@
+#!/bin/sh 
+
+cat <<EOF
+dbtool for installing and dumping mysql db
+(c) Alexander Weigl <alex953@gmail.com>
+EOF
+
+if [ $1 = --help ]; then
+    echo "Usage: $0 <action> <dbname> <file>"
+    echo "\t<action> = install|dump"   
+    exit
+fi
+
+
+read -p "Mysql-User: "  mysql_user
+stty -echo 
+read -p "Password: " passw; echo 
+stty echo
+
+[ -z $2 ] && 2=invoke
+
+case "$1" in 
+    'install')
+	mysql -u $mysql_user -p$passw $2 < $3
+	;;
+    'dump')
+	mysqldump -u $mysql_user -p$passw $2 > $3
+	;;    
+esac
