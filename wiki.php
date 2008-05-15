@@ -76,8 +76,15 @@ elseif($action=='edit_article' and $_SESSION['loggedIn'])
 }
 
 
-if(!$site) $new_article=true;
+if(!$site)
+  {
+    $new_article=true;
+    $smarty->assign("prototype" , true); #unload prototype because mootools
+  }
+else
   { 
+    
+    
     $article = array();
     if(isset( $version_no ))
       {

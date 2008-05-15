@@ -8,81 +8,59 @@
   <input type="text" name="alias" id="alias" size="16" value="{$smarty.post.alias}"/><br> 
   <b>Content</b><br>
   <textarea name="content" id="content" rows="25"
-	    cols="80">{$smarty.post.content}</textarea><br>	
-  
-  <div id="flashUI1" style="display: none;">
-    <div class="flash" id="fsUploadProgress1"></div>
-    <div>
-      <input type="button" value="Datei hochlaoden" 
-	     onclick="upload1.selectFiles()" style="font-size: 8pt;" />
-      <input id="btnCancel1" type="button" value="Cancel Uploads" 
-	     onclick="cancelQueue(upload1);" disabled="disabled" 
-	     style="font-size: 8pt;" /><br />
-    </div>
-  </div>
-  <div id="degradedUI1">
-    <legend>Upload</legend>
-    <input type="file" name="anyfile1" /> (Any file, Max 100 MB)<br/>
-    </fieldset>
-<div>
-  <input type="submit" value="Submit Files" />
-</div></div>
+	    cols="80">{$smarty.post.content}</textarea><br>	  
 <br>
 <input type="submit" value="Speichern" />
-
 </form>
 
+
+<form action="include/_uploadarticle.php" method="post" enctype="multipart/form-data" id="form-demo">
+	<fieldset id="demo-fallback">
+		<legend>File Upload</legend>
+		<p>Wähle ein Datei zum Upload aus:<br />
+			<strong>This form is just an example fallback for the unobtrusive behaviour of FancyUpload.</strong>
+		</p>
+		<label for="demo-photoupload">
+			Upload Photos:
+			<input type="file" name="photoupload" id="demo-photoupload" />
+		</label>
+	</fieldset>
+ 
+	<div id="demo-status" class="hide">
+		<p>
+			<a href="#" id="demo-browse-all">Browse Files</a> |
+			<a href="#" id="demo-browse-images">Browse Only Images</a> |
+			<a href="#" id="demo-clear">Clear List</a> |
+			<a href="#" id="demo-upload">Upload</a>
+		</p>
+		<div>
+			<strong class="overall-title">Overall progress</strong><br />
+			<img src="js/fancyupload/bar.gif" class="progress overall-progress" />
+		</div>
+		<div>
+			<strong class="current-title">File Progress</strong><br />
+			<img src="js/fancyupload/bar.gif" class="progress current-progress" />
+		</div>
+		<div class="current-text"></div>
+	</div>
+	<ul id="demo-list"></ul> 
+</form>
+
+
 {literal}
-<script type="text/javascript"
-	src="js/swfupload/swfupload.js"></script>
-<script type="text/javascript" src="js/swfupload.graceful_degradation.js"></script>
-<script type="text/javascript" src="js/swfupload.queue.js"></script>
-<script type="text/javascript" src="js/handlers.js"></script>
-<script language="javascript" type="text/javascript" src="js/tinymce/tiny_mce.js"></script>
-<script type="text/javascript" language="javascript">
-var upload1; 
+<script language="javascript" type="text/javascript"
+	src="js/fancyupload/mootools-trunk-1553.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/fancyupload/Fx.ProgressBar.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/fancyupload/Swiff.Uploader.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/fancyupload/FancyUpload2.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/fancyupload/fu_impl.js"></script>
 
-window.onload = function() {
-  upload1 = new SWFUpload({
-  // Backend Settings
-  upload_url: "include/_uploadarticle.php" ,
-  post_params: {"PHPSESSID" : "<?php echo session_id(); ?>"},
-
-   // File Upload Settings
-  file_size_limit : "102400",	// 100MB
-  file_types : "*.*",
-  file_types_description : "All Files",
-  file_upload_limit : "10",
-  file_queue_limit : "0",
-
-// Event Handler Settings (all my handlers are in the Handler.js file)
-  file_dialog_start_handler : fileDialogStart,
-  file_queued_handler : fileQueued,
-  file_queue_error_handler : fileQueueError,
-  file_dialog_complete_handler : fileDialogComplete,
-  upload_start_handler : uploadStart,
-  upload_progress_handler : uploadProgress,
-  upload_error_handler : uploadError,
-  upload_success_handler : uploadSuccess,
-  upload_complete_handler : uploadComplete,
-
-// Flash Settings
-  flash_url : "js/swfupload/swfupload_f9.swf",
-				
-  swfupload_element_id : "flashUI1",
-  swfupload_id : "flashUI1",
-  degraded_element_id : "degradedUI1",
-  custom_settings : {
-   a_dom_setting : $('flashUI1'),
-   progressTarget : "fsUploadProgress1",
-   cancelButtonId : "btnCancel1"
-  },
-  // Debug Settings
-  debug: true
-  }); 
-};
-
-</script>
+<script language="javascript" type="text/javascript"
+	src="js/tinymce/tiny_mce.js"></script>
 
 <script language="javascript" type="text/javascript">
   tinyMCE.init({

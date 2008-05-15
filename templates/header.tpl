@@ -10,8 +10,10 @@
 {*popup_init src="/javascripts/overlib.js"*}
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script src="js/prototype.js"    type="text/javascript"></script>
-<script src="js/scriptaculous.js" type="text/javascript" language="javascript"></script>
+{if !$prototype}
+    <script src="js/prototype.js"    type="text/javascript"></script>
+    <script src="js/scriptaculous.js" type="text/javascript" language="javascript"></script> 
+{/if}
 <script src="js/invoke.js" type="text/javascript" language="javascript"></script>
 {if $ext_js}
   {literal}
