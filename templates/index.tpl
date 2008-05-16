@@ -13,11 +13,16 @@
     <th>Neueste Benutzer</th>
     <th>Neuste Änderungen</th>
     <th>Neueste Artikel</th>
-	</tr>
+  </tr>
   <tr>
 	<td>{include file="_latestuser.tpl"}</td>
 	<td>{include file="_latestversions.tpl"}</td>
 	<td>{include file="_latestarticles.tpl"}</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      {include file="_articletagcloud.tpl"}
+    </td>
   </tr>
 </table>
 <h2>Beschreibung</h2>

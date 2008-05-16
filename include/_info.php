@@ -1,6 +1,30 @@
 <?
 require_once("init.inc.php");
 
+function tagcloud_article()
+{
+  global $db, $logger;
+  require_once("TagCloud.php");
+  $tc = new HTML_TagCloud();
+
+  $sql = "SELECT Common_Name, Created, COUNT(at.Article_Tag_Id) AS Count".
+    " FROM articletags NATURAL JOIN article_articletags at GROUP BY Common_Name, Created; ";
+
+  $tags = $db->fetchAll($sql);
+   
+  foreach($tags as $tag)
+    {
+      $tc->addElement($tag['Common_Name'], 'search.php?tag='.$tag['Common_Name'], $tag['Count'], $tag['Created']);
+    }
+  echo $tc->buildAll();
+}
+
+function indexstats()
+{
+  global $lucene;
+  echo "Indexgröße: " . $lucene->getIndexSize() . " KB | Dokumente:  " . $lucene->getDocsCount() ;
+}
+
 function latestusers($param)
 {
   global $db;

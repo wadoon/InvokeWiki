@@ -5,8 +5,14 @@
  * Autor: alex
  *}
 </div>
-<div id="footer">
-Request took: {$smarty.now-$smarty.server.REQUEST_TIME} secs
+<div id="footer">Suchindex:
+<span id="lucene-status">
+     <script language="javascript">
+     new Ajax.Updater('lucene-status', 'include/_info.php?action=indexstats');
+     </script>
+</span>
+
+{*Request took: {$smarty.now-$smarty.server.REQUEST_TIME} secs*}
 {*foreach from=$smarty.server key=key item=value}
 	{$key} = {$value}<br>
 {/foreach*}
