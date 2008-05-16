@@ -9,6 +9,8 @@
  * 08.10.2007 alex: inital comment
  *****************************************************************/
 
+$config['root_url'] = 'http://mars/ax/invokewiki/'; 
+$config['upload_url']  = $config['root_url'] . 'upload';
 $config['upload_dir'] = dirname(__FILE__).'/upload';
 $config['index_path']    = dirname(__FILE__) .'/lindex';
 $config['max_file_size'] = 10 * 1024 * 1024; // 10MB

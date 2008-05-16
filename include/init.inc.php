@@ -51,6 +51,8 @@ $smarty->assign("site_title", "InVoke");
 $writer = new Zend_Log_Writer_Db($db, 'log');
 $logger = new Zend_Log($writer);
 
+$smarty->assign('config',$config);
+
 $smarty->template_dir = dirname( dirname (__FILE__) )."/templates";
 $smarty->compile_dir = dirname( dirname (__FILE__) )."/templates_c";
 

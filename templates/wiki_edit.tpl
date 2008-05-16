@@ -37,93 +37,27 @@
 
 </form>
 
-{literal}
-<script type="text/javascript"
-	src="js/swfupload/swfupload.js"></script>
-<script type="text/javascript"
-	src="js/swfupload.graceful_degradation.js"></script>
-<script type="text/javascript" src="js/swfupload.queue.js"></script>
-<script type="text/javascript" src="js/handlers.js"></script>
 <script language="javascript" type="text/javascript"
-	src="js/tinymce/tiny_mce_src.js"></script>
-<!--script language="javascript" type="text/javascript"
-	src="js/tinymce/tiny_mce_popup.js"></script-->
-<script type="text/javascript" language="javascript">
-var upload1; 
+	src="js/fancyupload/mootools-trunk-1553.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/fancyupload/Fx.ProgressBar.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/fancyupload/Swiff.Uploader.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/fancyupload/FancyUpload2.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/fancyupload/fu_impl.js"></script>
 
-window.onload = function() {
-  upload1 = new SWFUpload({
-  // Backend Settings
-  upload_url: "include/_uploadarticle.php" ,
-  post_params: {"PHPSESSID" : "<?php echo session_id(); ?>"},
+<script language="javascript" type="text/javascript"
+	src="js/tinymce/tiny_mce.js"></script>
 
-   // File Upload Settings
-  file_size_limit : "102400",	// 100MB
-  file_types : "*.*",
-  file_types_description : "All Files",
-  file_upload_limit : "10",
-  file_queue_limit : "0",
-
-// Event Handler Settings (all my handlers are in the Handler.js file)
-  file_dialog_start_handler : fileDialogStart,
-  file_queued_handler : fileQueued,
-  file_queue_error_handler : fileQueueError,
-  file_dialog_complete_handler : fileDialogComplete,
-  upload_start_handler : uploadStart,
-  upload_progress_handler : uploadProgress,
-  upload_error_handler : uploadError,
-  upload_success_handler : uploadSuccess,
-  upload_complete_handler : uploadComplete,
-
-// Flash Settings
-  flash_url : "js/swfupload/swfupload_f9.swf",
-				
-  swfupload_element_id : "flashUI1",
-  swfupload_id : "flashUI1",
-  degraded_element_id : "degradedUI1",
-  custom_settings : {
-   a_dom_setting : $('flashUI1'),
-   progressTarget : "fsUploadProgress1",
-   cancelButtonId : "btnCancel1"
-  },
-  // Debug Settings
-  debug: true
-  }); 
-};
-
-</script>
+<script language="javascript" type="text/javascript"
+	src="js/tinymce/tm_impl.js"></script>
 
 <script language="javascript" type="text/javascript">
-  tinyMCE.init({
-    theme : "advanced",
-    mode: "exact",
-    elements : "content",
-    theme_advanced_toolbar_location : "top",
-    theme_advanced_buttons1 : "bold,italic,underline,strikethrough,separator,"
-    + "justifyleft,justifycenter,justifyright,justifyfull,formatselect,"
-    + "bullist,numlist,outdent,indent",
-    theme_advanced_buttons2 : "link,unlink,anchor,image,separator,"
-    +"undo,redo,cleanup,code,separator,sub,sup,charmap",
-    theme_advanced_buttons3 : "",
-    height:"500px",
-    width:"700px",
-    file_browser_callback : 'myFileBrowser',
-//    init_instance_callback : 'resizeEditorBox'
-  });
-
-  function myFileBrowser (field_name, url, type, win) {
-    var fileBrowserWindow = new Array();
-    fileBrowserWindow['title'] = 'File Browser';
-    fileBrowserWindow['file'] = "my_cms_script.php" + "?type=" + type;
-    fileBrowserWindow['width'] = '420';
-    fileBrowserWindow['height'] = '400';
-    tinyMCE.openWindow(fileBrowserWindow, { window : win, resizable : 'yes', inline : 'yes' });
-    return false;
-  }
+  var cmsURL="{$config.root_url}include/_filebrowser.php";
 </script>
 
-
-{/literal}
 {else} {*no login*}
 {include file="nologin.tpl"}
 {/if}

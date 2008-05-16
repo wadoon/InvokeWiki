@@ -47,7 +47,6 @@
 </form>
 
 
-{literal}
 <script language="javascript" type="text/javascript"
 	src="js/fancyupload/mootools-trunk-1553.js"></script>
 <script language="javascript" type="text/javascript"
@@ -62,36 +61,13 @@
 <script language="javascript" type="text/javascript"
 	src="js/tinymce/tiny_mce.js"></script>
 
-<script language="javascript" type="text/javascript">
-  tinyMCE.init({
-    theme : "advanced",
-    mode: "exact",
-    elements : "content",
-    theme_advanced_toolbar_location : "top",
-    theme_advanced_buttons1 : "bold,italic,underline,strikethrough,separator,"
-    + "justifyleft,justifycenter,justifyright,justifyfull,formatselect,"
-    + "bullist,numlist,outdent,indent",
-    theme_advanced_buttons2 : "link,unlink,anchor,image,separator,"
-    +"undo,redo,cleanup,code,separator,sub,sup,charmap",
-    theme_advanced_buttons3 : "",
-    height:"350px",
-    width:"600px",
-    file_browser_callback : 'myFileBrowser'
-  });
+<script language="javascript" type="text/javascript"
+	src="js/tinymce/tm_impl.js"></script>
 
-  function myFileBrowser (field_name, url, type, win) {
-    var fileBrowserWindow = new Array();
-    fileBrowserWindow['title'] = 'File Browser';
-    fileBrowserWindow['file'] = "my_cms_script.php" + "?type=" + type;
-    fileBrowserWindow['width'] = '420';
-    fileBrowserWindow['height'] = '400';
-    tinyMCE.openWindow(fileBrowserWindow, { window : win, resizable : 'yes', inline : 'yes' });
-    return false;
-  }
+<script language="javascript" type="text/javascript">
+  var cmsURL="{$config.root_url}include/_filebrowser.php";
 </script>
 
-
-{/literal}
 {else} {*no login*}
-{include file="nologin.tpl"}
+  {include file="nologin.tpl"}
 {/if}
