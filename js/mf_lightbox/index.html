@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Graphics by Greg - Mulifaceted Lightbox</title>
+	<link rel="stylesheet" type="text/css" href="page.css">
+	<link rel="stylesheet" type="text/css" href="lightbox.css">
+	<script language="javascript" src="prototype.js"></script>
+	<script language="javascript" src="mf_lightbox.js"></script>
+	<script language="javascript">
+		Event.observe(window, 'load', init, false);
+		
+		function init() {
+			Lightbox.init();
+		}
+	</script>
+</head>
+<body>
+
+<div id="pageContainer">
+	<h1>Multifaceted Lightbox</h1>
+
+	<h3>What is it?</h3>
+	
+	A script (JavaScript) that allows you to focus the users attention on a particular portion of the screen.  It creates the equivalent 
+	of a modal dialog box - this means that while the user looks at this focused part of the screen, they can't interact with the rest 
+	of the screen.  
+
+	<h3>Inspirations</h3>
+	<ul>
+		<li><a href="http://www.huddletogether.com/projects/lightbox/" target="_blank">Lightbox JS: Fullsize Image Overlays</a>: The original...used to show images, like in a lightbox</li>
+		<li><a href="http://particletree.com/features/lightbox-gone-wild/" target="_blank">Particletree · Lightbox Gone Wild!</a>: Took the concept of the original but loaded non-image content into the page using AJAX</li>
+		<li><a href="http://pjhyett.com/articles/2006/02/09/the-lightbox-effect-without-lightbox" target="_blank">The Lightbox Effect without Lightbox</a>: A simpler approach than the second, this is what I used as a basis for my code</li>
+		<li><a href="http://amix.dk/projects/?page_id=5" target="_blank">amix.dk : GreyBox - a pop up window that doesn't suck</a>: An iframe approach to creating popups on the screen</li>
+	</ul>
+	
+	<h3>What is different about this version? and some examples.</h3>
+	<ul>
+		<li>This version has 4 different types of data that can be loaded into the lightbox:
+			<ul>
+				<li><a href="#" onClick="Lightbox.showBoxString('This content was passed to the lightbox as a string', 300, 200);return false;">String</a>: you can pass a simple string that will be loaded in the lightbox</li>
+				<li><a href="images/05.jpg" onClick="Lightbox.showBoxImage(this.href);return false;">Image</a>: it can pickup the url of an image and load it inline in the lightbox</li>
+				<li><a href="#" onClick="Lightbox.showBoxByID('hiddenDiv', 350, 300);return false;">Local element</a>: you can pass it the ID of an element on the page to be shown in the lightbox.  When the lightbox is
+				closed, the element will be hidden and added as the last element within the body</li>
+				<li><a href="#" onClick="Lightbox.showBoxByAJAX('ajax_fragment.html', 150, 300);return false;">AJAX</a>: content can be loaded from a URL with AJAX</li>
+			</ul>
+		</li>
+		<li>Aside from the image version, you can specify the width and height of the lightbox when invoking it</li>
+		<li>If the dimensions of the lightbox are bigger than the user's window, it will automatically shrink the size of the lightbox (for all except image lightbox)</li>
+		<li>The functions have all been put inside of a simple class to avoid function name clashes and encapsulate the functionality</li>
+		<li>This doesn't automatically add the lightbox functionality to links with particular text in them (i.e. rel="lightbox")</li>
+	</ul>
+	
+	<h3>Download it</h3>
+	<a href="mf_lightbox.zip">Download</a> the script, stylesheets, images, and examples...
+	
+	
+	<h3>More Examples</h3>
+	<div id="examples">
+		<div id="gallery">
+			<a href="images/01.jpg" onClick="Lightbox.showBoxImage(this.href);return false;"><img src="images/01_small.jpg"></a>
+			<a href="images/02.jpg" onClick="Lightbox.showBoxImage(this.href);return false;"><img src="images/02_small.jpg"></a>
+			<a href="images/03.jpg" onClick="Lightbox.showBoxImage(this.href);return false;"><img src="images/03_small.jpg"></a>
+			<a href="images/04.jpg" onClick="Lightbox.showBoxImage(this.href);return false;"><img src="images/04_small.jpg"></a>
+			<a href="images/05.jpg" onClick="Lightbox.showBoxImage(this.href);return false;"><img src="images/05_small.jpg"></a>
+			<a href="images/06.jpg" onClick="Lightbox.showBoxImage(this.href);return false;"><img src="images/06_small.jpg"></a>
+			<br /><br />
+			<a href="#" onClick="Lightbox.showBoxString('Each image has an onClick handler that invokes the Lightbox.showBoxImage function.  It passes the image path, and the script takes care of the rest!<br><br>This link passed it\'s text as a string, using the Lightbox.showBoxString function, also passing along a width and height for the lightbox...', 300, 200);return false;">How does this work?</a>
+		</div>
+	</div>
+</div>
+&copy; 2006 Greg Neustaetter
+
+<div id="hiddenDiv" style="display: none;">
+	<h3>Login</h3>
+	This section was loaded from a local id on the current page.  When you close it, it will remain on the page.  Enter some
+	text in one of the fields, close the lightbox, and open it again - your text should still be there...<br /><br />
+	<table>
+		<tr>
+			<td>Username:</td>
+			<td><input type="text" name="username"></td>
+		</tr>
+		<tr>
+			<td>Password:</td>
+			<td><input type="password" name="userpass"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="right"><input type="submit" value="Login"></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

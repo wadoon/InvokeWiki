@@ -1,9 +1,38 @@
+{*
+ * @File: profile.tpl
+ * @Version: 1.0
+ * @Date: 17.05.2008
+ * @Autor: Alexander Weigl
+ * 
+ * SVN:
+ * $LastChangedDate: 2008-06-01 15:38:31 +0200 (So, 01 Jun 2008) $
+ * $LastChangedRevision: 20 $
+ * $LastChangedBy: alex953 $
+ * $HeadURL: https://invokewiki.googlecode.com/svn/branches/design-improvments/templates/profile.tpl $
+ * $Id: profile.tpl 20 2008-06-01 13:38:31Z alex953 $
+ * $Author: alex953 $
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *}
+ 
 {include file="header.tpl"}
-<h1>Benutzer-Profile</h1>
-{include file="menu.tpl"}
+<h1>Benutzer-Profil</h1>
 {include file="message.tpl"}
 <form  encoding="utf-8"  id="register_form"  method="post">
   <input type="hidden" name="form" value="user_update" />
+  <h2>Benutzerdaten</h2>
    <table>
      <tr>
        <th>UserId</th>
@@ -36,8 +65,7 @@
    </table>
 </form>
 <form method="post">
-<fieldset>
-  <legend>Passwort setzen:</legend>
+<h2>Passwort setzen</h2>
   <input type="hidden" name="form" value="set_pwd" />
   <table>
     <tr>
@@ -56,19 +84,14 @@
        <td colspan="2"><input type="submit" value="Setzen" /></td>           
      </tr>
    </table>
-</fieldset>
 </form>
 <div>
-	<fieldset><legend>Tag-Suppe:</legend>
-	  <label for="tagsearch">Tagssuche</label>
-	  <input type="text" id="tagsearch" name="tagsearch" />
-	  
-	  <span id="indicator1" style="display: none"><img src="/images/spinner.gif" alt="Working..." /></span>
-	  <div id="tag_choices" class="autocomplete"></div>
-
-	  <div id="tag_soup"></div>
-
-	</fieldset>
+  <h2>Tag-Suppe:</h2>
+  <label for="tagsearch">Tagssuche</label>
+  <input type="text" id="tagsearch" name="tagsearch" />
+  <span id="indicator1" style="display: none"><img src="icons/hourglass.png" alt="Working..." /></span>
+  <div id="tag_choices" class="autocomplete"></div>
+  <div id="tag_soup"></div>
 </div>
 {literal}
 <script language="javascript">

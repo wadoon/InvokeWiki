@@ -1,37 +1,57 @@
-{*	
- * File: index.tpl
- * Version: 1.0
- * Date:  09.05.2008
- * Autor: Alexander Weigl
+{*
+ * @File: index.tpl
+ * @Version: 1.0
+ * @Date: 10.05.2008
+ * @Autor: Alexander Weigl
+ * 
+ * SVN:
+ * $LastChangedDate: 2008-06-01 15:38:31 +0200 (So, 01 Jun 2008) $
+ * $LastChangedRevision: 20 $
+ * $LastChangedBy: alex953 $
+ * $HeadURL: https://invokewiki.googlecode.com/svn/branches/design-improvments/templates/index.tpl $
+ * $Id: index.tpl 20 2008-06-01 13:38:31Z alex953 $
+ * $Author: alex953 $
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *}
+ 
 {include file="header.tpl"}
-<h1>Invoke Start-Seite</h1>
-	{include file="menu.tpl"}
-	{include file="message.tpl"}
-<table>
-  <tr>
-    <th>Neueste Benutzer</th>
-    <th>Neuste Änderungen</th>
-    <th>Neueste Artikel</th>
-  </tr>
-  <tr>
-	<td>{include file="_latestuser.tpl"}</td>
-	<td>{include file="_latestversions.tpl"}</td>
-	<td>{include file="_latestarticles.tpl"}</td>
-  </tr>
-  <tr>
-    <td colspan="3">
-      {include file="_articletagcloud.tpl"}
-    </td>
-  </tr>
-</table>
-<h2>Beschreibung</h2>
-<div class="text">
-  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit
-</div>
-
-<h2>Datenschutz</h2>
-<div class="text">
-  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit
-</div>
+{include file="message.tpl"}
+<div class="clearfix" id="col1_content">
+					<h2>Column  #col1</h2>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam leo.  Donec massa tellus, sodales vitae, mattis a, pretium in, nisi.  Pellentesque ultrices, lacus eget volutpat commodo, lorem purus  faucibus dolor, ut faucibus ipsum tellus a elit. Pellentesque habitant  morbi tristique senectus et netus et malesuada fames ac turpis egestas.  Pellentesque ut mi sed dolor nonummy rhoncus. Duis laoreet est id  mauris dignissim porttitor. </p>
+					<div class="subcolumns">
+						<div class="c50l">
+							<div class="subcl">
+								<h3>Linker Block</h3>
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam leo.  Donec massa tellus, sodales vitae, mattis a, pretium in, nisi.  Pellentesque ultrices, lacus eget volutpat commodo, lorem purus  faucibus dolor, ut faucibus ipsum tellus a elit. Pellentesque habitant  morbi tristique senectus et netus et malesuada fames ac turpis egestas.  Pellentesque ut mi sed dolor nonummy rhoncus. Duis laoreet est id  mauris dignissim porttitor. </p>
+								<p>Etiam ullamcorper magna et dui. Morbi  lectus metus, porta sit amet, accumsan nec, aliquet vitae, nisl. Proin  cursus tempus lectus. Ut a risus et neque ornare molestie. Nulla erat  enim, dictum in, interdum vitae, rhoncus non, ligula. Sed sollicitudin  sollicitudin turpis. Maecenas vitae neque.</p>
+							</div>
+						</div>
+						<div class="c50r">
+							<div class="subcr">
+								{if $smarty.session.loggedIn}
+									{include file="_articletagcloud_userrated.tpl"}
+								{/if}
+								{include file="_articletagcloud.tpl"}
+								
+								<h3>Rechter Block</h3>
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam leo.  Donec massa tellus, sodales vitae, mattis a, pretium in, nisi.  Pellentesque ultrices, lacus eget volutpat commodo, lorem purus  faucibus dolor, ut faucibus ipsum tellus a elit. </p>
+								<p>Pellentesque habitant  morbi tristique senectus et netus et malesuada fames ac turpis egestas.  Pellentesque ut mi sed dolor nonummy rhoncus. Duis laoreet est id  mauris dignissim porttitor. Etiam ullamcorper magna et dui. Morbi  lectus metus, porta sit amet, accumsan nec, aliquet vitae, nisl. Proin  cursus tempus lectus. Ut a risus et neque ornare molestie. Nulla erat  enim, dictum in, interdum vitae, rhoncus non, ligula. Sed sollicitudin  sollicitudin turpis. Maecenas vitae neque.</p>
+							</div>
+						</div>
+					</div>
+				</div>
 {include file="footer.tpl"}

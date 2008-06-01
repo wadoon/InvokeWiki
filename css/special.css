@@ -1,0 +1,301 @@
+/*
+ * @File: special.css
+ * @Version: 1.0
+ * @Date: 17.05.2008
+ * @Autor: Alexander Weigl
+ * 
+ * SVN:
+ * $LastChangedDate: 2008-06-01 15:38:31 +0200 (So, 01 Jun 2008) $
+ * $LastChangedRevision: 20 $
+ * $LastChangedBy: alex953 $
+ * $HeadURL: https://invokewiki.googlecode.com/svn/branches/design-improvments/css/special.css $
+ * $Id: special.css 20 2008-06-01 13:38:31Z alex953 $
+ * $Author: alex953 $
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+ 
+/***** Header in Left *****/
+#col3 a  , #col3 a:link
+{
+	font-weight:700;
+	text-decoration:underline;
+}
+
+#col3 a:visited {
+	text-decoration:line-through;
+	font-weight:400;
+}
+
+#col3 a:active {
+	color:orange;
+	font-weight: 600;
+	text-decoration:blink;
+}
+
+
+#col3 .tagcloud a
+{
+	color: #ccc !important;
+	text-decoration: none;	
+}
+
+#col3 .tagcloud
+{
+                             margin:1em;
+}
+
+#col3 h3 {
+	font-weight:100;
+	border-bottom: 1px #ccc dotted;
+                             margin-top:1em;
+}
+
+#tag_soup {
+                             margin:1em;
+}
+
+/*** Rating ***/
+img.rate:hover {
+                             opacity:1;               
+}
+
+img.inactive {
+                             opacity:0.2;
+}
+
+/***** SearchBox left *****/
+#search_wiki, #query, #tag {
+                             text-indent:20px;
+                             background: white no-repeat url(../icons/magnifier.png);
+                             }
+
+span.search_form
+{
+                             float:right;
+                             vertical-align:middle;
+}
+
+input#search_wiki
+{
+                             border:1px solid black !important;
+                             width:20em;
+                             
+}
+button.tagsearch {
+                             border: 1px navy dotted;
+                             border-bottom:2px navy solid;
+                             border-right:2px navy solid;
+                             background:white;
+}
+/****** Info Boxen *****/
+.info {
+	
+}
+
+.info ul {
+
+
+}
+
+.info li {
+	list-style-type:upper-roman;
+}
+
+input {
+  -moz-border-radius:8px;
+}
+
+
+/****** Auto Completion *************/
+
+div.autocomplete {
+	position:absolute;
+        width:250px;
+        background-color:white;
+        border:1px solid #888;
+	margin:0px;
+        padding:0px;
+	z-index: 250 !important;
+	color: black !important;
+}
+div.autocomplete ul {
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+
+div.autocomplete ul li.selected { background-color: #ffb; font-weight:900;}
+div.autocomplete ul li {
+	list-style-type:none;
+	display:block;
+	margin:0;
+	padding:2px;
+	cursor:pointer;
+	color:black;
+}
+
+/**
+ * Formulare
+ */
+
+input[type=submit], button {
+	-moz-border-radius:5px;
+}
+
+#textcontent
+{
+	width:100%	
+}
+
+/** FancyUploading **/
+/***************************************************/
+#fancy-status
+{
+	background-color:                       #F9F7ED;
+	padding:				10px 15px;
+	width:					420px;
+}
+ 
+#fancy-status .progress
+{
+	background:				white url(../icons/progress.gif) no-repeat;
+	background-position:	+50% 0;
+	margin-right:			0.5em;
+}
+ 
+#fancy-status .progress-text
+{
+	font-size:				0.9em;
+	font-weight:			bold;
+}
+ 
+#fancy-list
+{
+	list-style:				none;
+	width:					450px;
+	margin:					0;
+}
+ 
+#fancy-list li.file
+{
+	border-bottom:			1px solid #eee;
+	background:				url(../icons/file.png) no-repeat 4px 4px;
+}
+#fancy-list li.file.file-uploading
+{
+	background-image:		url(../../assets/uploading.png);
+	background-color:		#D9DDE9;
+}
+#fancy-list li.file.file-success
+{
+	background-image:		url(../../assets/success.png);
+}
+#fancy-list li.file.file-failed
+{
+	background-image:		url(../../assets/failed.png);
+}
+ 
+#fancy-list li.file .file-name
+{
+	font-size:				1.2em;
+	margin-left:			44px;
+	display:				block;
+	clear:					left;
+	line-height:			40px;
+	height:					40px;
+	font-weight:			bold;
+}
+#fancy-list li.file .file-size
+{
+	font-size:				0.9em;
+	line-height:			18px;
+	float:					right;
+	margin-top:				2px;
+	margin-right:			6px;
+}
+#fancy-list li.file .file-info
+{
+	display:				block;
+	margin-left:			44px;
+	font-size:				0.9em;
+	line-height:			20px;
+	clear
+}
+#fancy-list li.file .file-remove
+{
+	clear:					right;
+	float:					right;
+	line-height:			18px;
+	margin-right:			6px;
+}
+
+
+.wiki_article h1 {
+                             display: none;
+}
+
+#col1 h1 {
+                             border-bottom: dashed #ccc 1px;
+                             font-size: 20pt;
+}
+
+/************ search.php  ****************************/
+div#search_content { 
+                     border: 1px solid rgb(32, 118, 161);
+}    
+
+div.hit { 
+          border-bottom: 1px solid rgb(32, 118, 161);
+          margin:0.5em;
+          }
+
+div.hit:last-child { 
+                     border-bottom:0;
+                     margin-bottom:0;
+                     }
+
+div.hit div.small { 
+                    font-size:8pt;
+                    font-family:monospace;
+                    }
+
+div.hit a { 
+            font-size:12pt;
+            font-weight:bolder;    
+            }
+
+div.hit:first-child { 
+                      background:#eee;
+                      margin-bottom: 1.5em;
+                      font-size: larger;
+                      }
+
+.success {
+                             opacity:0.6;
+                             background:#52FF00;
+                             border:1px groove green;
+                             text-align:center;
+                             color:black;
+                             
+}
+
+.error {
+                             opacity:0.6;
+                             background:#FF5200;
+                             border:1px groove red;
+                             text-align:center;
+                             color:black;                            
+}

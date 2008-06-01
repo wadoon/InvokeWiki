@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh  -x
 
 cat <<EOF
 dbtool for installing and dumping mysql db

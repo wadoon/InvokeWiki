@@ -1,6 +1,33 @@
+{*
+ * @File: search.tpl
+ * @Version: 1.0
+ * @Date: 17.05.2008
+ * @Autor: Alexander Weigl
+ * 
+ * SVN:
+ * $LastChangedDate: 2008-06-01 15:38:31 +0200 (So, 01 Jun 2008) $
+ * $LastChangedRevision: 20 $
+ * $LastChangedBy: alex953 $
+ * $HeadURL: https://invokewiki.googlecode.com/svn/branches/design-improvments/templates/search.tpl $
+ * $Id: search.tpl 20 2008-06-01 13:38:31Z alex953 $
+ * $Author: alex953 $
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *}
 {include file="header.tpl"}
-{include file="menu.tpl"}
-<h1>Suche:</h1>
+<h2>Suche:</h2>
 <form action="" onSubmit="return false;">
       <label for="query"><b>Ihre Suchanfrage: </b></label> 
       <input type="text" value="{$smarty.request.search_wiki}" id="query" name="query" />
@@ -25,7 +52,8 @@
 <center>	Suche wird ausgeführt ... </center>
 </div>
 <script language="javascript">
-	new Ajax.Updater('search_content', 'include/_searchwiki.php?query={$smarty.request.search_wiki}');
+	new Ajax.Updater('search_content',
+			 'include/_searchwiki.php?query={$smarty.request.search_wiki}&tag={$smarty.request.tag}');
 </script>
 
 {literal}

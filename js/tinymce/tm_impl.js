@@ -1,7 +1,7 @@
 tinyMCE.init({
     theme : "advanced",
     mode: "exact",
-    elements : "content",
+    elements : "textcontent",
     theme_advanced_toolbar_location : "top",
     theme_advanced_buttons1 : "bold,italic,underline,strikethrough,separator,"
     + "justifyleft,justifycenter,justifyright,justifyfull,formatselect,"
@@ -9,8 +9,8 @@ tinyMCE.init({
     theme_advanced_buttons2 : "link,unlink,anchor,image,separator,"
     +"undo,redo,cleanup,code,separator,sub,sup,charmap",
     theme_advanced_buttons3 : "",
-    height:"350px",
-    width:"600px",
+    height:"600px",
+    width:"100%",
     file_browser_callback : 'myFileBrowser',
     external_link_list_url :
     "include/_filebrowser.php?output=js&type=file",

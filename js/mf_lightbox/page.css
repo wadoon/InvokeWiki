@@ -1,0 +1,56 @@
+body, div, span, td, th, input, textarea, li {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 13px;
+}
+
+a img {
+	border: 0;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background: #999999;
+}
+
+h1 {
+	text-align: center;
+}
+
+#pageContainer {
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	width: 600px;
+	background: #EFEFEF;
+	text-align: left;
+	padding: 5px 10px;
+	border: 3px solid #FFFFFF;
+}
+
+#examples {
+	text-align: center;
+}
+
+#gallery {
+	width: 510px;
+	text-align: center;
+	background: #FFFFFF;
+	border: 1px solid #000000;
+	margin: auto;
+	padding: 6px 0;
+}
+
+#gallery img {
+	margin: 6px;
+	border: 1px solid #000000;
+}
+
+#box {
+	text-align: left;
+}
+
+li a {
+	font-weight: bold;
+}

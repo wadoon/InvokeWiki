@@ -437,7 +437,10 @@ class HTML_TagCloud
         $range = $this->_maxFontSize - $this->_minFontSize;
         // calculate the factor for building the font size deltas
         if ($this->_max != $this->_min) {
-            $this->_factor = $range / (sqrt($this->_max) - sqrt($this->_min));
+            #fix of division through 0 alexander weigl <alexander.weigl@lotto-rlp.de>
+            $div = (sqrt($this->_max) - sqrt($this->_min));
+            $div = $div?$div:1;
+            $this->_factor = $range / $div;
         } else {
             $this->_factor = 1;
         }

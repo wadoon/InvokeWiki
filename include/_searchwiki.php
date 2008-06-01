@@ -1,14 +1,68 @@
 <?
+/*
+ * @File: _searchwiki.php
+ * @Version: 1.0
+ * @Date: 17.05.2008
+ * @Autor: Alexander Weigl
+ * 
+ * SVN:
+ * $LastChangedDate: 2008-06-01 15:38:31 +0200 (So, 01 Jun 2008) $
+ * $LastChangedRevision: 20 $
+ * $LastChangedBy: alex953 $
+ * $HeadURL: https://invokewiki.googlecode.com/svn/branches/design-improvments/include/_searchwiki.php $
+ * $Id: _searchwiki.php 20 2008-06-01 13:38:31Z alex953 $
+ * $Author: alex953 $
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+ 
 require("init.inc.php");
+
+$lastversion=null;
+
+//at.Common_Name, a.Alias,  a.Title, a.Article_Id, av.Version_No , u.E_Mail, u.Last_Name, u.First_Name, av.Content , av.Created
+
+function buildHtml($hit)
+{
+  global $lastversion;
+
+  if( $hit['Article_Id']  == $lastversion) return;
+  $lastversion = $hit['Article_Id'];
+   
+  echo "<div class='hit'>";
+  echo '<a href="wiki.php?alias='.
+    $hit["Alias"]. '&version_no='.
+    $hit["Version_No"].'">'.$hit['Title']."</a> - ";
+  
+  echo substr( stripslashes( strip_tags(  $hit['Content'] ) ), 0,50);
+  
+  echo "<div class='small'><strong>Erstellt am:</strong> ". $hit['Created'] ;
+  echo " <strong>Ersteller: </strong>";
+  echo $hit['First_Name']. ' '.
+    $hit['Last_Name'] .' &lt;'.
+    $hit['E_Mail'].'&gt;<br />'. $hit['further'] .'</div>';	    
+  echo "</div>";
+  
+}
 
 
 if($_GET['query'])
   {
     $query = Zend_Search_Lucene_Search_QueryParser::parse($_GET['query']);
     $hits = $lucene->search($query);
-     
-    $sourceHTML;
-    
+   
     if( !count($hits) )
       {
 	echo '<div class="error">Ihre Suchanfrage ergabe keine Treffer.</div>';
@@ -17,25 +71,23 @@ if($_GET['query'])
       { 
 	foreach($hits as $hit)
 	  {
-	    $sourceHTML .= "<div class='hit'>";
+	    
 	    $doc = $hit->getDocument();
-	    
-	    $sourceHTML .= '<a href="wiki.php?alias='.
-	      $doc->getFieldValue("Alias"). '&version_no='.
-	      $doc->getFieldValue("Version").'">'.
-	      "<b style='font-size:14pt'>".$doc->getFieldValue('Title')."</b></a> - ";
-	    
-	    $sourceHTML .= $doc->getFieldValue("body");
-	    
-	    $sourceHTML .="<div class='small'><b>Erstellt am:</b> ".
-	      $doc->getFieldValue("Created")."<b>Id:</b>$hit->id <b>Score:</b> $hit->score - ";
-	    $sourceHTML .=$doc->getFieldValue('FirstName'). ' '.
-	      $doc->getFieldValue('LastName') .' &lt;'.
-	      $doc->getFieldValue('EMail').'&gt;</div>';
-	    
-	    $sourceHTML .= "</div>";
+	    #var_dump($doc);
+	    $ary = array(
+	      'Alias'      => $doc->getFieldValue("Alias"), 
+	      'Title' 	   => $doc->getFieldValue('Title'), 
+	      'Article_Id' => $doc->getFieldValue('Id'), 
+	      'Version_No' => $doc->getFieldValue("Version"),
+	      'E_Mail'	   => $doc->getFieldValue('EMail'),
+	      'Last_Name'  => $doc->getFieldValue('LastName'),
+	      'First_Name' => $doc->getFieldValue('FirstName'),
+	      'Content'    => $doc->getFieldValue("body"),
+	      'Created'    => $doc->getFieldValue("Created"),
+	      'further'    => "<b>Id:</b> $hit->id <b>Score:</b> $hit->score"
+	      );
+	    buildHtml($ary);
 	  }
-	echo  $query->highlightMatches($sourceHTML);
       }
   }
 elseif($_GET['tag']) //Search after Tag
@@ -53,7 +105,7 @@ INNER JOIN users u
   ON u.user_id = av.creator
 WHERE 
   Common_Name = ?
-ORDER BY Version_No DESC, Created DESC" , $_GET['tag'] );
+ORDER BY Article_Id DESC, Version_No DESC, Created DESC" , $_GET['tag'] );
     /* 'Common_Name' => string 'Programmierung' (length=14)
      * 'title' => string 'Test01' (length=6)
        'article_id' => int 2
@@ -68,21 +120,7 @@ ORDER BY Version_No DESC, Created DESC" , $_GET['tag'] );
       {
 	foreach($article as $hit)
 	  {
-	    echo "<div class='hit'>";
-	    echo '<a href="wiki.php?alias='.
-	      $hit["Alias"]. '&version_no='.
-	      $hit["Version_No"].'">'.
-	      "<b style='font-size:14pt'>".$hit['Title']."<sup>$hit[Version_No]</sup></b></a> - ";
-	    
-	    echo substr( strip_tags( $hit['Content'] ), 0,50);
-	
-	    echo "<div class='small'><b>Erstellt am:</b> ".
-	      $hit['Created'];
-	    echo " Ersteller: ";
-	    echo $hit['First_Name']. ' '.
-	      $hit['Last_Name'] .' &lt;'.
-	      $hit['E_Mail'].'&gt;</div>';	    
-	    echo "</div>";
+	   buildHtml($hit);
 	  }   
       }
     else

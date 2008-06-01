@@ -1,25 +1,40 @@
+{*
+ * @File: wiki_show.tpl
+ * @Version: 1.0
+ * @Date: 17.05.2008
+ * @Autor: Alexander Weigl
+ * 
+ * SVN:
+ * $LastChangedDate: 2008-06-01 15:38:31 +0200 (So, 01 Jun 2008) $
+ * $LastChangedRevision: 20 $
+ * $LastChangedBy: alex953 $
+ * $HeadURL: https://invokewiki.googlecode.com/svn/branches/design-improvments/templates/wiki_show.tpl $
+ * $Id: wiki_show.tpl 20 2008-06-01 13:38:31Z alex953 $
+ * $Author: alex953 $
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *}
+<h1>{$article.Title}</h1>
 <div class="wiki_article">
-<div style="float:right">
-     <a href="?action=show_edit&alias={$article.Alias}&articleId={$article.Article_Id}">Bearbeiten</a>
-</div>
-     <h1>{$article.Title}</h1>
-     <div class="rating">
-	  {foreach from=$ratings item=rating}
-	       <div id="rating_{$rating->id}">
-	       {$rating->html}
-	       {if $smarty.session.loggedIn}
-		    <select onChange="rate( {$article.Article_Id},{$rating->id},$F(this))">
-			 <option value="-1">-</option>
-			 <option value="5">Sehr gut</option>
-			 <option value="4">Gut </option>
-			 <option value="3">Mittelmäßig</option>
-			 <option value="2">Mangelhaft</option>
-			 <option value="1">Fehlerhaft</option>			 		    </select>
-	       {/if}
-	       </div>
-	  </div
-	  {/foreach}
-     </div>
+  {if (!$article.Closed) or  $smarty.session.is_admin == 1}
+  <div style="float:right">    
+    <a href="?action=show_edit&alias={$article.Alias}&articleId={$article.Article_Id}">	 
+      <img src="icons/pencil.png" alt="Pencil" width="15" height="15" />Bearbeiten</a>
+  </div>
+  {/if}
+
 {*
      <div class="sub">
      	  ArticleId: {$article.Article_Id} - 
@@ -28,57 +43,10 @@
 	  Alias:     {$article.Alias} -
 	  Version:   {$article.Version_No} -
 	  Comment:   {$article.Comment}
-     <div>*}
-     {$article.Content}     
-
-	<fieldset><legend>Tag-Suppe:</legend>
-	  <label for="tagsearch">Tagssuche</label>
-	  <input type="text" id="tagsearch" name="tagsearch" />	 
-	  <button onClick="addArticleTag" >Hinzufügen</button>
-	  <span id="indicator1" style="display: none"><img src="/images/spinner.gif" alt="Working..." /></span>
-	  <div id="tag_choices" class="autocomplete"></div>	  
-	  <div id="tag_soup"></div>	  
-	</fieldset>
-     </div>
-     <script language="javascript">
-       var articleId = {$article.Article_Id};
-     </script>
-     {literal}
-     <script language="javascript">         
-       new Ajax.Updater('tag_soup', 'include/_atagsoup.php?action=list&articleId='+articleId);
-       
-       new Ajax.Autocompleter("tagsearch", "tag_choices",
-       "include/_atagsoup.php?action=search" , 
-       {paramName: "value", 
-        minChars: 1, 
-        updateElement: addTagToListArticle, 
-        indicator: 'indicator1'} );
-
-
- 
-
-       function addArticleTag()
-       {
-         var value = $F('tagsearch');
-         if(value.empty()) return;
-       
-          new Ajax.Request('include/_atagsoup.php', 
-          {
-            parameters: {action:add, name:value},
-            method:'get', 
-            onSuccess : function(r) {
-                                 $('tagsearch').value=''; 
-            },
-            onFailure:  function(r) { 
-                                alert(r.responseText);
-            }
-          })
-       }
-     </script>
-{/literal}     
-     
-     <div id="version_info">
-       <a onClick="new Ajax.Updater('version_info','include/_versioninfo.php?articleId={$article.Article_Id}&version_no={$article.Version_No}')">Versioninformationen</a>
+     <div>
+*}
+     <div id="wiki_content">
+	  {$article.Content}     
      </div>
 </div>
      
